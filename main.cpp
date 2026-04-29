@@ -1,8 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 using namespace chrono;
-
-// ===== Module 1: Player =====
+// ── Player ─────────────────────────────
 class Player {
 private:
     string name;
@@ -18,6 +17,14 @@ public:
     }
 
     int getWPM() const { return wpm; }
+
+    void display(int rank) const {
+        cout << left << setw(5) << rank
+             << setw(15) << name
+             << right << setw(6) << wpm << " WPM   "
+             << fixed << setprecision(1) << accuracy << "%\n";
+    }
+};
 
     void display(int rank) const {
         cout << left << setw(5) << rank
