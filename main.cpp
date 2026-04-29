@@ -97,6 +97,37 @@ public:
 };
 // ===== Main Driver =====
 int main() {
-    cout << "Typing Speed Test\n";
-    return 0;
+    vector<Test> tests = {
+        Test("the quick brown fox jumps over the lazy dog", 30),
+        Test("practice makes perfect and consistency is the key to success", 60),
+        Test("object oriented programming uses encapsulation inheritance polymorphism and abstraction", 90)
+    };
+
+    Leaderboard board;
+    char again = 'y';
+
+    while (again == 'y' || again == 'Y') {
+        string name;
+        cout << "Enter name: ";
+        cin >> name;
+
+        Player p(name);
+
+        int choice;
+        cout << "1.Easy 2.Medium 3.Hard: ";
+        cin >> choice;
+
+        Test &t = tests[choice - 1];
+        int wpm;
+        double acc;
+
+        t.run(wpm, acc);
+        p.setScore(wpm, acc);
+
+        board.add(p);
+        board.show();
+
+        cout << "Again? (y/n): ";
+        cin >> again;
+    }
 }
