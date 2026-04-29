@@ -1,7 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 using namespace chrono;
-// ── Player ─────────────────────────────
+
+// ===== Module 1: Player (Teammate 1) =====
 class Player {
 private:
     string name;
@@ -26,14 +27,7 @@ public:
     }
 };
 
-    void display(int rank) const {
-        cout << left << setw(5) << rank
-             << setw(15) << name
-             << right << setw(6) << wpm << " WPM   "
-             << fixed << setprecision(1) << accuracy << "%\n";
-    }
-};
-// ===== Module 2: Test =====
+// ===== Module 2: Test (Teammate 2) =====
 class Test {
 private:
     string text;
@@ -72,8 +66,7 @@ public:
     }
 };
 
-
-// ===== Module 3: Leaderboard =====
+// ===== Module 3: Leaderboard + Main (Teammate 3) =====
 class Leaderboard {
 private:
     vector<Player> scores;
@@ -95,7 +88,7 @@ public:
             scores[i].display(i + 1);
     }
 };
-// ===== Main Driver =====
+
 int main() {
     vector<Test> tests = {
         Test("the quick brown fox jumps over the lazy dog", 30),
