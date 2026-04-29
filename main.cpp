@@ -79,10 +79,22 @@ private:
     vector<Player> scores;
 
 public:
-    void add(const Player& p);
-    void show();
-};
+    void add(const Player& p) {
+        scores.push_back(p);
+    }
 
+    void show() {
+        sort(scores.begin(), scores.end(),
+             [](const Player &a, const Player &b) {
+                 return a.getWPM() > b.getWPM();
+             });
+
+        cout << "\nRank Name           WPM   Accuracy\n";
+        cout << "----------------------------------\n";
+        for (int i = 0; i < scores.size(); i++)
+            scores[i].display(i + 1);
+    }
+};
 // ===== Main Driver =====
 int main() {
     cout << "Typing Speed Test\n";
